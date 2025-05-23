@@ -6,13 +6,9 @@ phases:
       java: corretto8
     commands:
       - echo Downloading Maven 3.6.3...
-      - curl -sL -o /tmp/maven.tar.gz https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz
-      - ls -lh /tmp/maven.tar.gz
-      - file /tmp/maven.tar.gz
-      - tar xzf /tmp/maven.tar.gz -C /tmp
+      - curl -sL -o /tmp/maven.tar.gz https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz && tar xzf /tmp/maven.tar.gz -C /tmp
       - export M2_HOME=/tmp/apache-maven-3.6.3
       - export PATH=$M2_HOME/bin:$PATH
-      - mvn -version
       - mvn clean install -DskipTests
 
   build:
@@ -23,9 +19,9 @@ phases:
 
   post_build:
     commands:
-      - echo Pushing Docker image...
+      - echo Uploading WAR file to S3 bucket...
+      - aws s3 cp target/gameoflife.war s3://artifacts-mumbai/gameoflife.war
 
 artifacts:
   files:
     - gameoflife-web/target/gameoflife.war
-
