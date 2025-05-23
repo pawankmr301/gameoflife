@@ -15,7 +15,6 @@ phases:
   build:
     commands:
       - echo Building WAR file...
-      - cd gameoflife 
       - ls -ltr
       - echo Building Docker image...
 
