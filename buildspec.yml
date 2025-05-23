@@ -13,12 +13,12 @@ phases:
       - export M2_HOME=/tmp/apache-maven-3.6.3
       - export PATH=$M2_HOME/bin:$PATH
       - mvn -version
+      - mvn clean install -DskipTests
 
   build:
     commands:
       - echo Building WAR file...
       - cd ..
-      - mvn clean install -DskipTests
       - cd gameoflife-web
       - echo Building Docker image...
 
