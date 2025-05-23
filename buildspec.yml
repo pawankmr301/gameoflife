@@ -22,7 +22,6 @@ phases:
   post_build:
     commands:
       - echo Listing WAR file to verify build...
-      - ls -l gameoflife-web/target/
       - echo Uploading WAR file to S3 bucket...
 
 artifacts:
