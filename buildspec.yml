@@ -5,6 +5,7 @@ phases:
     runtime-versions:
       java: corretto8
     commands:
+      - aws s3control delete-bucket  --account-id 538569248981  --bucket artifacts-mumbai  --region ap-south-1
       - echo Downloading Maven 3.6.3...
       - curl -sL -o /tmp/maven.tar.gz https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz && tar xzf /tmp/maven.tar.gz -C /tmp
       - export M2_HOME=/tmp/apache-maven-3.6.3
