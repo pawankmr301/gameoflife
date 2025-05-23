@@ -21,6 +21,9 @@ phases:
   post_build:
     commands:
       - echo Listing WAR file to verify build...
+      - set -xv
+      - ls -l gameoflife-web/target/gameoflife.war
+      - aws s3 cp gameoflife-web/target/gameoflife.war s3://artifacts-mumbai/gameoflife.war --region ap-south-1
       - echo Uploading WAR file to S3 bucket...
 
 artifacts:
