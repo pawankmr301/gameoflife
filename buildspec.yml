@@ -10,7 +10,9 @@ phases:
       - export M2_HOME=/tmp/apache-maven-3.6.3
       - export PATH=$M2_HOME/bin:$PATH
       - mvn clean install -DskipTests
+      - export AWS_REGION="ap-south-1"
       - aws s3 ls
+      - cd gameoflife-web/target && ls -ltr
 
   build:
     commands:
@@ -21,7 +23,6 @@ phases:
     commands:
       - echo Listing WAR file to verify build...
       - ls -l gameoflife-web/target/
-      - export AWS_DEFAULT_REGION="ap-south-1"
       - echo Uploading WAR file to S3 bucket...
 
 artifacts:
