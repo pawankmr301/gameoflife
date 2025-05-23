@@ -20,6 +20,7 @@ phases:
   post_build:
     commands:
       - echo Uploading WAR file to S3 bucket...
+      - export AWS_DEFAULT_REGION="ap-south-1"
       - aws s3 cp gameoflife-web/target/gameoflife.war s3://artifacts-mumbai/gameoflife.war
 
 artifacts:
