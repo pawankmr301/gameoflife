@@ -10,7 +10,7 @@ phases:
       - export M2_HOME=/tmp/apache-maven-3.6.3
       - export PATH=$M2_HOME/bin:$PATH
       - mvn clean install -DskipTests
-      - aws s3 cp gameoflife-web/target/gameoflife.war s3://artifacts-mumbai/gameoflife.war
+      - aws s3 cp gameoflife-web/target/gameoflife.war s3://artifacts-mumbai/gameoflife.war --region ap-south-1
 
   build:
     commands:
