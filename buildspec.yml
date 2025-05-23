@@ -7,11 +7,11 @@ phases:
     commands:
       - echo Downloading Maven 3.6.3...
       - curl -sL -o /tmp/maven.tar.gz https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz && tar xzf /tmp/maven.tar.gz -C /tmp
-      - export M2_HOME=/tmp/apache-maven-3.6.3
-      - export PATH=$M2_HOME/bin:$PATH
 
   build:
     commands:
+      - export M2_HOME=/tmp/apache-maven-3.6.3
+      - export PATH=$M2_HOME/bin:$PATH
       - echo Building WAR file...
       - cd gameoflife-web
       - mvn clean install -DskipTests
