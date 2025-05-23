@@ -6,7 +6,7 @@ phases:
       java: corretto8
     commands:
       - echo Downloading Maven 3.6.3...
-      - curl -sL -o /tmp/maven.tar.gz https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+      - curl -sL -o /tmp/maven.tar.gz https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz
       - ls -lh /tmp/maven.tar.gz
       - file /tmp/maven.tar.gz
       - tar xzf /tmp/maven.tar.gz -C /tmp
