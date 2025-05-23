@@ -10,7 +10,7 @@ phases:
       - export M2_HOME=/tmp/apache-maven-3.6.3
       - export PATH=$M2_HOME/bin:$PATH
       - mvn clean install -DskipTests
-      - cd gameoflife-web/target && ls -ltr
+      - cd gameoflife-web/target && ls -ltr && cd - 
 
   build:
     commands:
