@@ -7,24 +7,22 @@ phases:
     commands:
       - echo Downloading Maven 3.6.3...
       - curl -sL -o /tmp/maven.tar.gz https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz && tar xzf /tmp/maven.tar.gz -C /tmp
-      - export M2_HOME=/tmp/apache-maven-3.6.3
-      - export PATH=$M2_HOME/bin:$PATH
-      - mvn clean install -DskipTests
-      - cd gameoflife-web/target && ls -ltr && cd - 
 
   build:
     commands:
       - echo Building WAR file...
-      - ls -ltr
-      - echo Building Docker image...
+      - export M2_HOME=/tmp/apache-maven-3.6.3
+      - export PATH=$M2_HOME/bin:$PATH
+      - mvn clean install -DskipTests
 
   post_build:
     commands:
       - echo Listing WAR file to verify build...
-      - set -xv
       - ls -l gameoflife-web/target/gameoflife.war
-      - aws s3 cp gameoflife-web/target/gameoflife.war s3://artifacts-bucket-mumbai-buildpipeline/gameoflife.war --region ap-south-1
-      - echo Uploading WAR file to S3 bucket...
+      - echo Uploading the artifacts on s3 bucket
+      - aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war 
+      - DATE=$(date '+%m%d%Y-%M-%S')
+      - aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war-${DATE} 
 
 artifacts:
   files:
