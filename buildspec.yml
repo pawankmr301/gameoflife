@@ -25,6 +25,7 @@ phases:
       - aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war-${DATE} 
 
 artifacts:
+  base-directory: gameoflife-web/target
   files:
-    - gameoflife-web/target/gameoflife.war
-    - scripts/*
+    - gameoflife.war
+  discard-paths: yes
