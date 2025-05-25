@@ -19,10 +19,6 @@ phases:
     commands:
       - echo Listing WAR file to verify build...
       - ls -l gameoflife-web/target/gameoflife.war
-      - echo Uploading the artifacts on s3 bucket
-      - echo aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war 
-      - echo DATE=$(date '+%m%d%Y-%M-%S')
-      - echo aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war-${DATE} 
 
 artifacts:
   files:
