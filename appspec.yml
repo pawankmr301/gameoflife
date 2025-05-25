@@ -1,5 +1,23 @@
 version: 0.0
 os: linux
+
 files:
-  - source: gameoflife-web/target/gameoflife.war
+  - source: gameoflife.war
     destination: /opt/tomcat/apache-tomcat-8.5.100/webapps
+
+hooks:
+  BeforeInstall:
+    - location: scripts/stop_tomcat.sh
+      timeout: 180
+      runas: root
+    - location: scripts/clean_old_war.sh
+      timeout: 180
+      runas: root
+
+  AfterInstall:
+    # nothing needed here
+
+  ApplicationStart:
+    - location: scripts/start_tomcat.sh
+      timeout: 180
+      runas: root
