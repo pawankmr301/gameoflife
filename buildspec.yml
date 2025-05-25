@@ -20,12 +20,12 @@ phases:
       - echo Listing WAR file to verify build...
       - ls -l gameoflife-web/target/gameoflife.war
       - echo Uploading the artifacts on s3 bucket
-      - aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war 
-      - DATE=$(date '+%m%d%Y-%M-%S')
-      - aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war-${DATE} 
+      - echo aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war 
+      - echo DATE=$(date '+%m%d%Y-%M-%S')
+      - echo aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war-${DATE} 
 
 artifacts:
-  base-directory: gameoflife-web/target
   files:
-    - gameoflife.war
-  discard-paths: yes
+    - gameoflife-web/target/gameoflife.war
+    - appspec.yml
+    - scripts/*
