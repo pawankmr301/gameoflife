@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - source: gameoflife.war
+  - source: gameoflife-web/target/gameoflife.war
     destination: /opt/tomcat/apache-tomcat-8.5.100/webapps
 
 hooks:
