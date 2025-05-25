@@ -23,7 +23,6 @@ phases:
       - aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war 
       - DATE=$(date '+%m%d%Y-%M-%S')
       - aws s3 cp gameoflife-web/target/gameoflife.war s3://${ARTIFACT_BUCKET}/gameoflife.war-${DATE} 
-      - 
 
 artifacts:
   files:
